@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Open Camera on Click</title>
+</head>
+
+<body>
+    <button id="startCamera">Open Camera</button>
+    <video id="cameraFeed" autoplay playsinline></video>
+    <script src="./getUserMedia.js-gh-pages/getUserMedia.js-gh-pages/lib/getUserMedia.js"> </script>
+
+    <script>
+        const startCameraButton = document.getElementById('startCamera');
+        const cameraFeed = document.getElementById('cameraFeed');
+
+        startCameraButton.addEventListener('click', () => {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                        cameraFeed.srcObject = stream;
+                    })
+                    .catch(function (error) {
+                        console.error('Error accessing the camera: ' + error);
+                    });
+            } else if (navigator.getUserMedia) { // For older browsers
+                navigator.getUserMedia({ video: true }, function (stream) {
+                    cameraFeed.src = window.URL.createObjectURL(stream);
+                }, function (error) {
+                    console.error('Error accessing the camera: ' + error);
+                });
+            } else {
+                console.error('getUserMedia is not supported in this browser.');
+            }
+        });
+    </script>
+</body>
+
+</html>
