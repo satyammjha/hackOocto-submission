@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background: #17684f;
+        }
+
+        .container {
+            text-align: center;
+            height: 10rem;
+            width: 10rem;
+            background-color: rgba(218, 221, 218, 0.784);
+            width: 90%;
+            border-radius: 10px;
+            margin-left: 7%;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 50%;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" id="cameraContainer">
+
+        <div class="camera_btn" id="startCamera">
+            <h2 onclick="openCamera()">Click to open camera</h2>
+        </div>
+
+    </div>
+
+    <script>
+        function openCamera() {
+            // Try to access the user's camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    // Display the video stream in a video element
+                    var video = document.createElement('video');
+                    video.srcObject = stream;
+                    document.getElementById('cameraContainer').appendChild(video);
+                    video.play();
+                })
+                .catch(function (error) {
+                    console.error('Error accessing the camera: ', error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>
