@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background: #17684f;
+        }
+
+        .container {
+            text-align: center;
+            height: 10rem;
+            width: 10rem;
+            background-color: rgba(218, 221, 218, 0.784);
+            width: 90%;
+            border-radius: 10px;
+            margin-left: 7%;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 50%;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="camera_btn" id="startCamera">
+            <h2>Click to open camera</h2>
+        </div>
+
+        <video id="cameraFeed" autoplay playsinline></video>
+        <script src="./getUserMedia.js-gh-pages/getUserMedia.js-gh-pages/lib/getUserMedia.js"> </script>
+    </div>
+
+
+</body>
+
+</html>
